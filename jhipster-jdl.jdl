@@ -1,0 +1,70 @@
+
+// an ignored comment
+/** not an ignored comment */
+entity File {
+	pidNumber String,
+	type TypeUC,
+    documentType String,
+    demandeType String,
+    reference String,
+    messageRnetTitle String,
+    communication String,
+    clientMessage String,
+    ttcAmount String,
+    bic String,
+    iban String,
+    receptionDate LocalDate,
+    emissionDate LocalDate,
+    expiryDate LocalDate,
+	creationDate LocalDate,
+    modificationDate LocalDate,
+    storeGed Boolean
+}
+
+entity Customer {
+    idun String,
+    firstNameRNET String,
+  	lastNameRNET String,
+    firstNamePID String,
+    lastNamePID String,
+    nationality String
+}
+
+entity Classification {
+	nomSerieDocument String,
+    classificationFileNet String,
+    nTreesCategory String,
+    nTwoCategory String
+}
+
+enum TypeUC {
+	UC1, UC2, UC3, UC4_5
+}
+
+
+
+relationship OneToOne {
+	File to Classification
+}
+
+//relationship ManyToMany {
+//	Job{task(title)} to Task{job}
+//}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+    Customer to File
+}
+
+
+// Set pagination options
+paginate File with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

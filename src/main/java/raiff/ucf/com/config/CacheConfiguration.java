@@ -46,6 +46,10 @@ public class CacheConfiguration {
     @Bean
     public JCacheManagerCustomizer cacheManagerCustomizer() {
         return cm -> {
+            createCache(cm, raiff.ucf.com.domain.File.class.getName());
+            createCache(cm, raiff.ucf.com.domain.Customer.class.getName());
+            createCache(cm, raiff.ucf.com.domain.Customer.class.getName() + ".files");
+            createCache(cm, raiff.ucf.com.domain.Classification.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
