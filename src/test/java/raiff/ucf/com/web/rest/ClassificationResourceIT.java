@@ -29,8 +29,8 @@ import raiff.ucf.com.repository.ClassificationRepository;
 @WithMockUser
 class ClassificationResourceIT {
 
-    private static final String DEFAULT_NOM_SERIE_DOCUMENT = "AAAAAAAAAA";
-    private static final String UPDATED_NOM_SERIE_DOCUMENT = "BBBBBBBBBB";
+    private static final String DEFAULT_DOCUMENT_SERIES_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_DOCUMENT_SERIES_NAME = "BBBBBBBBBB";
 
     private static final String DEFAULT_CLASSIFICATION_FILE_NET = "AAAAAAAAAA";
     private static final String UPDATED_CLASSIFICATION_FILE_NET = "BBBBBBBBBB";
@@ -66,7 +66,7 @@ class ClassificationResourceIT {
      */
     public static Classification createEntity(EntityManager em) {
         Classification classification = new Classification()
-            .nomSerieDocument(DEFAULT_NOM_SERIE_DOCUMENT)
+            .documentSeriesName(DEFAULT_DOCUMENT_SERIES_NAME)
             .classificationFileNet(DEFAULT_CLASSIFICATION_FILE_NET)
             .nTreesCategory(DEFAULT_N_TREES_CATEGORY)
             .nTwoCategory(DEFAULT_N_TWO_CATEGORY);
@@ -81,7 +81,7 @@ class ClassificationResourceIT {
      */
     public static Classification createUpdatedEntity(EntityManager em) {
         Classification classification = new Classification()
-            .nomSerieDocument(UPDATED_NOM_SERIE_DOCUMENT)
+            .documentSeriesName(UPDATED_DOCUMENT_SERIES_NAME)
             .classificationFileNet(UPDATED_CLASSIFICATION_FILE_NET)
             .nTreesCategory(UPDATED_N_TREES_CATEGORY)
             .nTwoCategory(UPDATED_N_TWO_CATEGORY);
@@ -108,7 +108,7 @@ class ClassificationResourceIT {
         List<Classification> classificationList = classificationRepository.findAll();
         assertThat(classificationList).hasSize(databaseSizeBeforeCreate + 1);
         Classification testClassification = classificationList.get(classificationList.size() - 1);
-        assertThat(testClassification.getNomSerieDocument()).isEqualTo(DEFAULT_NOM_SERIE_DOCUMENT);
+        assertThat(testClassification.getDocumentSeriesName()).isEqualTo(DEFAULT_DOCUMENT_SERIES_NAME);
         assertThat(testClassification.getClassificationFileNet()).isEqualTo(DEFAULT_CLASSIFICATION_FILE_NET);
         assertThat(testClassification.getnTreesCategory()).isEqualTo(DEFAULT_N_TREES_CATEGORY);
         assertThat(testClassification.getnTwoCategory()).isEqualTo(DEFAULT_N_TWO_CATEGORY);
@@ -146,7 +146,7 @@ class ClassificationResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(classification.getId().intValue())))
-            .andExpect(jsonPath("$.[*].nomSerieDocument").value(hasItem(DEFAULT_NOM_SERIE_DOCUMENT)))
+            .andExpect(jsonPath("$.[*].documentSeriesName").value(hasItem(DEFAULT_DOCUMENT_SERIES_NAME)))
             .andExpect(jsonPath("$.[*].classificationFileNet").value(hasItem(DEFAULT_CLASSIFICATION_FILE_NET)))
             .andExpect(jsonPath("$.[*].nTreesCategory").value(hasItem(DEFAULT_N_TREES_CATEGORY)))
             .andExpect(jsonPath("$.[*].nTwoCategory").value(hasItem(DEFAULT_N_TWO_CATEGORY)));
@@ -164,7 +164,7 @@ class ClassificationResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(classification.getId().intValue()))
-            .andExpect(jsonPath("$.nomSerieDocument").value(DEFAULT_NOM_SERIE_DOCUMENT))
+            .andExpect(jsonPath("$.documentSeriesName").value(DEFAULT_DOCUMENT_SERIES_NAME))
             .andExpect(jsonPath("$.classificationFileNet").value(DEFAULT_CLASSIFICATION_FILE_NET))
             .andExpect(jsonPath("$.nTreesCategory").value(DEFAULT_N_TREES_CATEGORY))
             .andExpect(jsonPath("$.nTwoCategory").value(DEFAULT_N_TWO_CATEGORY));
@@ -190,7 +190,7 @@ class ClassificationResourceIT {
         // Disconnect from session so that the updates on updatedClassification are not directly saved in db
         em.detach(updatedClassification);
         updatedClassification
-            .nomSerieDocument(UPDATED_NOM_SERIE_DOCUMENT)
+            .documentSeriesName(UPDATED_DOCUMENT_SERIES_NAME)
             .classificationFileNet(UPDATED_CLASSIFICATION_FILE_NET)
             .nTreesCategory(UPDATED_N_TREES_CATEGORY)
             .nTwoCategory(UPDATED_N_TWO_CATEGORY);
@@ -207,7 +207,7 @@ class ClassificationResourceIT {
         List<Classification> classificationList = classificationRepository.findAll();
         assertThat(classificationList).hasSize(databaseSizeBeforeUpdate);
         Classification testClassification = classificationList.get(classificationList.size() - 1);
-        assertThat(testClassification.getNomSerieDocument()).isEqualTo(UPDATED_NOM_SERIE_DOCUMENT);
+        assertThat(testClassification.getDocumentSeriesName()).isEqualTo(UPDATED_DOCUMENT_SERIES_NAME);
         assertThat(testClassification.getClassificationFileNet()).isEqualTo(UPDATED_CLASSIFICATION_FILE_NET);
         assertThat(testClassification.getnTreesCategory()).isEqualTo(UPDATED_N_TREES_CATEGORY);
         assertThat(testClassification.getnTwoCategory()).isEqualTo(UPDATED_N_TWO_CATEGORY);
@@ -295,7 +295,7 @@ class ClassificationResourceIT {
         List<Classification> classificationList = classificationRepository.findAll();
         assertThat(classificationList).hasSize(databaseSizeBeforeUpdate);
         Classification testClassification = classificationList.get(classificationList.size() - 1);
-        assertThat(testClassification.getNomSerieDocument()).isEqualTo(DEFAULT_NOM_SERIE_DOCUMENT);
+        assertThat(testClassification.getDocumentSeriesName()).isEqualTo(DEFAULT_DOCUMENT_SERIES_NAME);
         assertThat(testClassification.getClassificationFileNet()).isEqualTo(DEFAULT_CLASSIFICATION_FILE_NET);
         assertThat(testClassification.getnTreesCategory()).isEqualTo(DEFAULT_N_TREES_CATEGORY);
         assertThat(testClassification.getnTwoCategory()).isEqualTo(UPDATED_N_TWO_CATEGORY);
@@ -314,7 +314,7 @@ class ClassificationResourceIT {
         partialUpdatedClassification.setId(classification.getId());
 
         partialUpdatedClassification
-            .nomSerieDocument(UPDATED_NOM_SERIE_DOCUMENT)
+            .documentSeriesName(UPDATED_DOCUMENT_SERIES_NAME)
             .classificationFileNet(UPDATED_CLASSIFICATION_FILE_NET)
             .nTreesCategory(UPDATED_N_TREES_CATEGORY)
             .nTwoCategory(UPDATED_N_TWO_CATEGORY);
@@ -331,7 +331,7 @@ class ClassificationResourceIT {
         List<Classification> classificationList = classificationRepository.findAll();
         assertThat(classificationList).hasSize(databaseSizeBeforeUpdate);
         Classification testClassification = classificationList.get(classificationList.size() - 1);
-        assertThat(testClassification.getNomSerieDocument()).isEqualTo(UPDATED_NOM_SERIE_DOCUMENT);
+        assertThat(testClassification.getDocumentSeriesName()).isEqualTo(UPDATED_DOCUMENT_SERIES_NAME);
         assertThat(testClassification.getClassificationFileNet()).isEqualTo(UPDATED_CLASSIFICATION_FILE_NET);
         assertThat(testClassification.getnTreesCategory()).isEqualTo(UPDATED_N_TREES_CATEGORY);
         assertThat(testClassification.getnTwoCategory()).isEqualTo(UPDATED_N_TWO_CATEGORY);

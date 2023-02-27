@@ -1,0 +1,103 @@
+{
+  "applications": "*",
+  "changelogDate": "20230220123709",
+  "clientRootFolder": "ucf",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "file",
+  "fields": [
+    {
+      "fieldName": "pidNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "TypeUC",
+      "fieldValues": "UC1,UC2,UC3,UC4_5"
+    },
+    {
+      "fieldName": "documentType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "demandeType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "messageRnetTitle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "communication",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "clientMessage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ttcAmount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bic",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "iban",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "receptionDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "emissionDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "expiryDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "modificationDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "storeGed",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "not an ignored comment",
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "ucf",
+  "name": "File",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "classification",
+      "otherEntityRelationshipName": "file",
+      "ownerSide": true,
+      "relationshipName": "classification",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "file",
+      "relationshipName": "customer",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

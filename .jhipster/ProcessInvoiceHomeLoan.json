@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20230227161322",
+  "clientRootFolder": "ucf",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "process_invoice_home_loan",
+  "fields": [
+    {
+      "fieldName": "ttcAmount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bic",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "iban",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "ucf",
+  "name": "ProcessInvoiceHomeLoan",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "processUpload",
+      "otherEntityRelationshipName": "processInvoiceHomeLoan",
+      "ownerSide": true,
+      "relationshipName": "processUpload",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

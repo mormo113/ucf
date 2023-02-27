@@ -50,6 +50,13 @@ public class CacheConfiguration {
             createCache(cm, raiff.ucf.com.domain.Customer.class.getName());
             createCache(cm, raiff.ucf.com.domain.Customer.class.getName() + ".files");
             createCache(cm, raiff.ucf.com.domain.Classification.class.getName());
+            createCache(cm, raiff.ucf.com.domain.ProcessMessagingRnet.class.getName());
+            createCache(cm, raiff.ucf.com.domain.ProcessIdentityDocument.class.getName());
+            createCache(cm, raiff.ucf.com.domain.ProcessInvoiceHomeLoan.class.getName());
+            createCache(cm, raiff.ucf.com.domain.ProcessPersonalLoan.class.getName());
+            createCache(cm, raiff.ucf.com.domain.AttachedFile.class.getName());
+            createCache(cm, raiff.ucf.com.domain.ProcessUpload.class.getName());
+            createCache(cm, raiff.ucf.com.domain.ProcessUpload.class.getName() + ".attachedFiles");
             // jhipster-needle-ehcache-add-entry
         };
     }

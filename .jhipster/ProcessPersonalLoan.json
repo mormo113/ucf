@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20230227161323",
+  "clientRootFolder": "ucf",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "process_personal_loan",
+  "fields": [
+    {
+      "fieldName": "requestType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "ucf",
+  "name": "ProcessPersonalLoan",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "processUpload",
+      "otherEntityRelationshipName": "processPersonalLoan",
+      "ownerSide": true,
+      "relationshipName": "processUpload",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

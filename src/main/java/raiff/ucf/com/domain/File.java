@@ -79,7 +79,7 @@ public class File implements Serializable {
     @Column(name = "store_ged")
     private Boolean storeGed;
 
-    @JsonIgnoreProperties(value = { "file" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "attachedFile" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
     private Classification classification;

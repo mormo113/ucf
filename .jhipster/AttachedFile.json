@@ -1,0 +1,53 @@
+{
+  "applications": "*",
+  "changelogDate": "20230227161324",
+  "clientRootFolder": "ucf",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "attached_file",
+  "fields": [
+    {
+      "fieldName": "fileName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "filePath",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "documentType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ocrRaw",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "storeGed",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "ucf",
+  "name": "AttachedFile",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "classification",
+      "otherEntityRelationshipName": "attachedFile",
+      "ownerSide": true,
+      "relationshipName": "classification",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "processUpload",
+      "otherEntityRelationshipName": "attachedFile",
+      "relationshipName": "processUpload",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -125,8 +125,8 @@ public class ClassificationResource {
         Optional<Classification> result = classificationRepository
             .findById(classification.getId())
             .map(existingClassification -> {
-                if (classification.getNomSerieDocument() != null) {
-                    existingClassification.setNomSerieDocument(classification.getNomSerieDocument());
+                if (classification.getDocumentSeriesName() != null) {
+                    existingClassification.setDocumentSeriesName(classification.getDocumentSeriesName());
                 }
                 if (classification.getClassificationFileNet() != null) {
                     existingClassification.setClassificationFileNet(classification.getClassificationFileNet());
@@ -156,11 +156,11 @@ public class ClassificationResource {
      */
     @GetMapping("/classifications")
     public List<Classification> getAllClassifications(@RequestParam(required = false) String filter) {
-        if ("file-is-null".equals(filter)) {
-            log.debug("REST request to get all Classifications where file is null");
+        if ("attachedfile-is-null".equals(filter)) {
+            log.debug("REST request to get all Classifications where attachedFile is null");
             return StreamSupport
                 .stream(classificationRepository.findAll().spliterator(), false)
-                .filter(classification -> classification.getFile() == null)
+                .filter(classification -> classification.getAttachedFile() == null)
                 .collect(Collectors.toList());
         }
         log.debug("REST request to get all Classifications");

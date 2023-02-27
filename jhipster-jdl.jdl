@@ -1,66 +1,100 @@
 
-// an ignored comment
-/** not an ignored comment */
-entity File {
-	pidNumber String,
-	type TypeUC,
-    documentType String,
-    demandeType String,
-    reference String,
-    messageRnetTitle String,
-    communication String,
-    clientMessage String,
-    ttcAmount String,
-    bic String,
-    iban String,
-    receptionDate LocalDate,
-    emissionDate LocalDate,
-    expiryDate LocalDate,
-	creationDate LocalDate,
-    modificationDate LocalDate,
-    storeGed Boolean
-}
-
-entity Customer {
-    idun String,
-    firstNameRNET String,
-  	lastNameRNET String,
-    firstNamePID String,
-    lastNamePID String,
-    nationality String
-}
-
 entity Classification {
-	nomSerieDocument String,
-    classificationFileNet String,
-    nTreesCategory String,
-    nTwoCategory String
+  documentSeriesName String,
+  classificationFileNet String,
+  nTreesCategory String,
+  nTwoCategory String
+   
 }
 
-enum TypeUC {
-	UC1, UC2, UC3, UC4_5
+
+
+entity ProcessMessagingRnet {
+  messageRnetTitle String,
+  messageRnetRef String
+   
+}
+
+
+entity ProcessIdentityDocument {
+  lastNamePid String,
+  firstNamePid String,
+  nationalityPid String,
+  numberPid String,
+  expirationDatePid LocalDate,
+  issueDatePid LocalDate
+  
+}
+
+
+entity ProcessInvoiceHomeLoan {
+  ttcAmount String,
+  bic String,
+  iban String
+}
+
+
+entity ProcessPersonalLoan {
+  requestType String,
+  reference String,
+  firstName String,
+  lastName String
+   
+}
+
+
+entity AttachedFile {
+  fileName String,
+  filePath String,
+  documentType String,
+  ocrRaw String,
+  storeGed String
+   
+}
+
+entity ProcessUpload {
+  processState String,
+  customerId String,
+  creationDate LocalDate,
+  lastUpdateDate LocalDate,
+  receptionDate LocalDate,
+  notes String
+   
 }
 
 
 
 relationship OneToOne {
-	File to Classification
+	AttachedFile to Classification
 }
 
-//relationship ManyToMany {
-//	Job{task(title)} to Task{job}
-//}
+relationship OneToOne {
+	ProcessMessagingRnet to ProcessUpload
+}
+
+relationship OneToOne {
+	ProcessIdentityDocument to ProcessUpload
+}
+
+relationship OneToOne {
+	ProcessInvoiceHomeLoan to ProcessUpload
+}
+
+relationship OneToOne {
+	ProcessPersonalLoan to ProcessUpload
+}
+
 
 // defining multiple OneToMany relationships with comments
 relationship OneToMany {
-    Customer to File
+    ProcessUpload to AttachedFile
 }
 
 
 // Set pagination options
-paginate File with pagination
+paginate ProcessUpload with pagination
 
-// Use Data Transfer Objects (DTO)
+// Use Data Transfer Objects {DTO}
 // dto * with mapstruct
 
 // Set service options to all except few

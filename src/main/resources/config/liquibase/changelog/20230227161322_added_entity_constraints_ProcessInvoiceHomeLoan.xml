@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity ProcessInvoiceHomeLoan.
+    -->
+    <changeSet id="20230227161322-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="process_upload_id"
+                                 baseTableName="process_invoice_home_loan"
+                                 constraintName="fk_process_invoice_home_loan__process_upload_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="process_upload"/>
+    </changeSet>
+</databaseChangeLog>

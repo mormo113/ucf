@@ -23,8 +23,8 @@ public class Classification implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nom_serie_document")
-    private String nomSerieDocument;
+    @Column(name = "document_series_name")
+    private String documentSeriesName;
 
     @Column(name = "classification_file_net")
     private String classificationFileNet;
@@ -35,9 +35,9 @@ public class Classification implements Serializable {
     @Column(name = "n_two_category")
     private String nTwoCategory;
 
-    @JsonIgnoreProperties(value = { "classification", "customer" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "classification", "processUpload" }, allowSetters = true)
     @OneToOne(mappedBy = "classification")
-    private File file;
+    private AttachedFile attachedFile;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -54,17 +54,17 @@ public class Classification implements Serializable {
         this.id = id;
     }
 
-    public String getNomSerieDocument() {
-        return this.nomSerieDocument;
+    public String getDocumentSeriesName() {
+        return this.documentSeriesName;
     }
 
-    public Classification nomSerieDocument(String nomSerieDocument) {
-        this.setNomSerieDocument(nomSerieDocument);
+    public Classification documentSeriesName(String documentSeriesName) {
+        this.setDocumentSeriesName(documentSeriesName);
         return this;
     }
 
-    public void setNomSerieDocument(String nomSerieDocument) {
-        this.nomSerieDocument = nomSerieDocument;
+    public void setDocumentSeriesName(String documentSeriesName) {
+        this.documentSeriesName = documentSeriesName;
     }
 
     public String getClassificationFileNet() {
@@ -106,22 +106,22 @@ public class Classification implements Serializable {
         this.nTwoCategory = nTwoCategory;
     }
 
-    public File getFile() {
-        return this.file;
+    public AttachedFile getAttachedFile() {
+        return this.attachedFile;
     }
 
-    public void setFile(File file) {
-        if (this.file != null) {
-            this.file.setClassification(null);
+    public void setAttachedFile(AttachedFile attachedFile) {
+        if (this.attachedFile != null) {
+            this.attachedFile.setClassification(null);
         }
-        if (file != null) {
-            file.setClassification(this);
+        if (attachedFile != null) {
+            attachedFile.setClassification(this);
         }
-        this.file = file;
+        this.attachedFile = attachedFile;
     }
 
-    public Classification file(File file) {
-        this.setFile(file);
+    public Classification attachedFile(AttachedFile attachedFile) {
+        this.setAttachedFile(attachedFile);
         return this;
     }
 
@@ -149,7 +149,7 @@ public class Classification implements Serializable {
     public String toString() {
         return "Classification{" +
             "id=" + getId() +
-            ", nomSerieDocument='" + getNomSerieDocument() + "'" +
+            ", documentSeriesName='" + getDocumentSeriesName() + "'" +
             ", classificationFileNet='" + getClassificationFileNet() + "'" +
             ", nTreesCategory='" + getnTreesCategory() + "'" +
             ", nTwoCategory='" + getnTwoCategory() + "'" +

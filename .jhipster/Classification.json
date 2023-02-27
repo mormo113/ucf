@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20230220123711",
+  "clientRootFolder": "ucf",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "classification",
+  "fields": [
+    {
+      "fieldName": "documentSeriesName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "classificationFileNet",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nTreesCategory",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nTwoCategory",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "ucf",
+  "name": "Classification",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "attachedFile",
+      "otherEntityRelationshipName": "classification",
+      "ownerSide": false,
+      "relationshipName": "attachedFile",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

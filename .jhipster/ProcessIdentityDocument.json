@@ -1,0 +1,51 @@
+{
+  "applications": "*",
+  "changelogDate": "20230227161321",
+  "clientRootFolder": "ucf",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "process_identity_document",
+  "fields": [
+    {
+      "fieldName": "lastNamePid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstNamePid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nationalityPid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numberPid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "expirationDatePid",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "issueDatePid",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "ucf",
+  "name": "ProcessIdentityDocument",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "processUpload",
+      "otherEntityRelationshipName": "processIdentityDocument",
+      "ownerSide": true,
+      "relationshipName": "processUpload",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,50 @@
+{
+  "applications": "*",
+  "changelogDate": "20230220123710",
+  "clientRootFolder": "ucf",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "customer",
+  "fields": [
+    {
+      "fieldName": "idun",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstNameRNET",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastNameRNET",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstNamePID",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastNamePID",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nationality",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "ucf",
+  "name": "Customer",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "file",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "file",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

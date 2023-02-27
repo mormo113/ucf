@@ -1,0 +1,78 @@
+{
+  "applications": "*",
+  "changelogDate": "20230227161325",
+  "clientRootFolder": "ucf",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "process_upload",
+  "fields": [
+    {
+      "fieldName": "processState",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "customerId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "lastUpdateDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "receptionDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "ucf",
+  "name": "ProcessUpload",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "attachedFile",
+      "otherEntityRelationshipName": "processUpload",
+      "relationshipName": "attachedFile",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "processMessagingRnet",
+      "otherEntityRelationshipName": "processUpload",
+      "ownerSide": false,
+      "relationshipName": "processMessagingRnet",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "processIdentityDocument",
+      "otherEntityRelationshipName": "processUpload",
+      "ownerSide": false,
+      "relationshipName": "processIdentityDocument",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "processInvoiceHomeLoan",
+      "otherEntityRelationshipName": "processUpload",
+      "ownerSide": false,
+      "relationshipName": "processInvoiceHomeLoan",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "processPersonalLoan",
+      "otherEntityRelationshipName": "processUpload",
+      "ownerSide": false,
+      "relationshipName": "processPersonalLoan",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}
