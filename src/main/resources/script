@@ -1,0 +1,152 @@
+--
+-- Table structure for table `classification`
+--
+
+CREATE SEQUENCE classification_id_seq START WITH 1 NO MAXVALUE;
+
+
+
+CREATE TABLE classification (
+  id bigint DEFAULT (next value for classification_id_seq) NOT NULL,
+  document_series_name varchar(255) DEFAULT NULL,
+  classification_file_net varchar(255) DEFAULT NULL,
+  n_trees_category varchar(255) DEFAULT NULL,
+  n_two_category varchar(255) DEFAULT NULL,
+   PRIMARY KEY (id)
+);
+
+
+--
+-- Table structure for table process_messaging_rnet
+--
+
+CREATE SEQUENCE process_messaging_rnet_id_seq START WITH 1 NO MAXVALUE;
+
+CREATE TABLE process_messaging_rnet (
+  id bigint DEFAULT (next value for process_messaging_rnet_id_seq) NOT NULL,
+  id_process_upload bigint DEFAULT NULL,
+  message_rnet_title varchar(255) DEFAULT NULL,
+  message_rnet_ref varchar(255) DEFAULT NULL,
+   PRIMARY KEY (id)
+);
+
+--
+-- Table structure for table process_identity_document
+--
+
+CREATE SEQUENCE process_identity_document_id_seq START WITH 1 NO MAXVALUE;
+
+CREATE TABLE process_identity_document (
+  id bigint DEFAULT (next value for process_identity_document_id_seq) NOT NULL,
+  id_process_upload bigint DEFAULT NULL,
+  last_name_pid varchar(255) DEFAULT NULL,
+  first_name_pid varchar(255) DEFAULT NULL,
+  nationality_pid varchar(255) DEFAULT NULL,
+  number_pid varchar(255) DEFAULT NULL,
+  expiration_date_pid date DEFAULT NULL,
+  issue_date_pid date DEFAULT NULL,
+   PRIMARY KEY (id)
+);
+
+--
+-- Table structure for table process_invoice_home_loan
+--
+
+CREATE SEQUENCE process_invoice_home_loan_id_seq START WITH 1 NO MAXVALUE;
+
+CREATE TABLE process_invoice_home_loan (
+  id bigint DEFAULT (next value for process_invoice_home_loan_id_seq) NOT NULL,
+  id_process_upload bigint DEFAULT NULL,
+  ttc_amount varchar(255) DEFAULT NULL,
+  bic varchar(255) DEFAULT NULL,
+  iban varchar(255) DEFAULT NULL,
+  communication varchar(255) DEFAULT NULL,
+   PRIMARY KEY (id)
+);
+
+--
+-- Table structure for table process_personal_loan
+--
+
+CREATE SEQUENCE process_personal_loan_id_seq START WITH 1 NO MAXVALUE;
+
+CREATE TABLE process_personal_loan (
+  id bigint DEFAULT (next value for process_personal_loan_id_seq) NOT NULL,
+  id_process_upload bigint DEFAULT NULL,
+  request_type varchar(255) DEFAULT NULL,
+  reference varchar(255) DEFAULT NULL,
+   PRIMARY KEY (id)
+);
+
+--
+-- Table structure for table attached_file
+--
+
+CREATE SEQUENCE attached_file_id_seq START WITH 1 NO MAXVALUE;
+
+CREATE TABLE attached_file (
+  id bigint DEFAULT (next value for attached_file_id_seq) NOT NULL,
+  id_process_upload bigint DEFAULT NULL,
+  id_classification bigint DEFAULT NULL,
+  file_name varchar(255) DEFAULT NULL,
+  file_path varchar(255) DEFAULT NULL,
+  document_type varchar(255) DEFAULT NULL,
+  ocr_raw varchar(MAX) DEFAULT NULL,
+   PRIMARY KEY (id)
+);
+
+--
+-- Table structure for table process_upload
+--
+
+CREATE SEQUENCE process_upload_id_seq START WITH 1 NO MAXVALUE;
+
+CREATE TABLE process_upload (
+  id bigint DEFAULT (next value for process_upload_id_seq) NOT NULL,
+  process_type varchar(255) NOT NULL,
+  process_state varchar(255) DEFAULT NULL,
+  customer_id varchar(255) DEFAULT NULL,
+  customer_first_name varchar(255) DEFAULT NULL,
+  customer_last_name varchar(255) DEFAULT NULL,
+  creation_date date DEFAULT NULL,
+  last_update_date date DEFAULT NULL,
+  reception_date date DEFAULT NULL,
+  store_ged BIT DEFAULT NULL,
+  already_open BIT,
+  notes varchar(1000) DEFAULT NULL,
+   PRIMARY KEY (id)
+);
+
+
+--
+-- Constraints for table process_messaging_rnet
+--
+ALTER TABLE process_messaging_rnet
+  ADD CONSTRAINT fk_process_messaging_rnet__process_upload_id FOREIGN KEY (id_process_upload) REFERENCES process_upload (id);
+
+--
+-- Constraints for table process_identity_document
+--
+ALTER TABLE process_identity_document
+  ADD CONSTRAINT fk_process_identity_document__process_upload_id FOREIGN KEY (id_process_upload) REFERENCES process_upload (id);
+
+--
+-- Constraints for table process_invoice_home_loan
+--
+ALTER TABLE process_invoice_home_loan
+  ADD CONSTRAINT fk_process_invoice_home_loan__process_upload_id FOREIGN KEY (id_process_upload) REFERENCES process_upload (id);
+
+--
+-- Constraints for table process_personal_loan
+--
+ALTER TABLE process_personal_loan
+  ADD CONSTRAINT fk_process_personal_loan__process_upload_id FOREIGN KEY (id_process_upload) REFERENCES process_upload (id);
+
+--
+-- Constraints for table attached_file
+--
+ALTER TABLE attached_file
+  ADD CONSTRAINT fk_attached_file__process_upload_id FOREIGN KEY (id_process_upload) REFERENCES process_upload (id);
+  ALTER TABLE attached_file
+  ADD CONSTRAINT fk_attached_file__classification_id FOREIGN KEY (id_classification) REFERENCES classification (id);
+
